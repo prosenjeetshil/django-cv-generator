@@ -67,3 +67,7 @@ def resume(request, id):
     # Get the value of the BytesIO buffer and return it as a response
     buffer.seek(0)
     return HttpResponse(buffer, content_type='application/pdf')
+
+def profile_list(request):
+    profiles = Profile.objects.all()  
+    return render(request, 'cv_pdf/list.html', {'profiles': profiles})
